@@ -1,0 +1,18 @@
+📸 AS NOSSAS FOTOS
+===================
+
+As 24 fotos de vocês já estão aqui (foto1.jpg ... foto24.jpg),
+já otimizadas (mais leves e com a orientação corrigida) e
+espalhadas ao longo do site.
+
+QUER TROCAR UMA FOTO?
+- Substitua o arquivo mantendo o mesmo nome (ex.: foto7.jpg).
+- Dica: o site usa cada foto numa posição pensada
+  (rostos, casal, alianças, família). Veja onde cada número
+  aparece no arquivo index.html / js/main.js antes de trocar.
+
+QUER MUDAR UMA LEGENDA?
+- As legendas das polaroids ficam no index.html
+  (procure por <figcaption>).
+
+Beijos do site que o David mandou fazer pra você. ♥

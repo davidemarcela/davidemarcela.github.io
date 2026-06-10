@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Um cantinho na internet feito com todo o meu amor para você, Marcela. ♥" />
+  <meta name="theme-color" content="#7a1f3d" />
+  <title>David ♥ Marcela — A nossa história</title>
+
+  <!-- Ícone de coração na aba -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ctext%20y='27'%20font-size='28'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+
+  <!-- Prévia bonita ao compartilhar (WhatsApp, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="David ♥ Marcela" />
+  <meta property="og:description" content="Um cantinho na internet feito com todo o meu amor para você. ♥" />
+  <meta property="og:image" content="https://davidemarcela.github.io/assets/fotos/foto9.jpg" />
+  <meta property="og:url" content="https://davidemarcela.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Privacidade: não aparecer em buscas (Google etc.) -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Barra de progresso de leitura -->
+  <div id="progress-bar"></div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="pre-heart">♥</div>
+    <p class="pre-text">carregando o nosso amor...</p>
+  </div>
+
+  <!-- Corações flutuando -->
+  <canvas id="hearts-canvas"></canvas>
+
+  <!-- Botão de música -->
+  <button id="music-toggle" title="Tocar nossa música" aria-label="Tocar música">
+    <span class="music-icon">♪</span>
+  </button>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="inicio">
+    <img class="hero-bg kenburns" src="assets/fotos/foto9.jpg" alt="David e Marcela" style="object-position:center 35%" />
+    <div class="hero-veil"></div>
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1400">
+      <p class="hero-pre">era uma vez, e para sempre...</p>
+      <h1 class="hero-names">
+        <span>David</span>
+        <span class="amp">&amp;</span>
+        <span>Marcela</span>
+      </h1>
+      <div class="hero-line"></div>
+      <p class="hero-typed-wrap"><span id="typed"></span></p>
+      <a href="#contador" class="scroll-down" aria-label="Rolar para baixo"><span></span></a>
+    </div>
+  </header>
+
+  <!-- ===================== CONTADOR ===================== -->
+  <section class="counter-section" id="contador">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">desde 16 de março de 2025</p>
+      <h2 class="section-title grad-text">Há quanto tempo te amo</h2>
+      <p class="section-sub">cada segundo ao seu lado é o meu favorito</p>
+    </div>
+
+    <div class="counter-grid" data-aos="fade-up" data-aos-delay="150">
+      <div class="counter-box"><span class="num" id="years">0</span><span class="label">anos</span></div>
+      <div class="counter-box"><span class="num" id="months">0</span><span class="label">meses</span></div>
+      <div class="counter-box"><span class="num" id="days">0</span><span class="label">dias</span></div>
+      <div class="counter-box"><span class="num" id="hours">0</span><span class="label">horas</span></div>
+      <div class="counter-box"><span class="num" id="minutes">0</span><span class="label">minutos</span></div>
+      <div class="counter-box"><span class="num" id="seconds">0</span><span class="label">segundos</span></div>
+    </div>
+
+    <p class="total-days" data-aos="fade-up" data-aos-delay="300">
+      são <span id="total-days">0</span> dias dizendo "eu te amo" ♥
+    </p>
+  </section>
+
+  <!-- ===================== MOMENTO 1 ===================== -->
+  <section class="moment">
+    <img class="moment-img kenburns" src="assets/fotos/foto6.jpg" alt="Nós dois" loading="lazy" style="object-position:center 16%" />
+    <div class="moment-veil"></div>
+    <div class="moment-text" data-aos="zoom-in">
+      <p class="moment-quote">"Com você, qualquer lugar vira o meu lugar favorito."</p>
+    </div>
+  </section>
+
+  <!-- ===================== MENSAGENS + POLAROIDS 1 ===================== -->
+  <section class="scatter scatter-a">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">do meu coração para o seu</p>
+      <h2 class="section-title grad-text">Pedacinhos de nós</h2>
+    </div>
+
+    <div class="scatter-row">
+      <figure class="polaroid rot-l" data-aos="flip-left">
+        <img src="assets/fotos/foto1.jpg" alt="" loading="lazy" />
+        <figcaption>só nós dois ♥</figcaption>
+      </figure>
+
+      <div class="love-note" data-aos="fade-up">
+        <div class="love-heart">♥</div>
+        <p>Você é o melhor "bom dia" e o mais doce "boa noite". Acordar sabendo que você existe já faz o meu dia valer a pena.</p>
+      </div>
+
+      <figure class="polaroid rot-r" data-aos="flip-right">
+        <img src="assets/fotos/foto13.jpg" alt="" loading="lazy" />
+        <figcaption>só alegria</figcaption>
+      </figure>
+    </div>
+
+    <div class="scatter-row reverse">
+      <figure class="polaroid rot-r" data-aos="flip-left">
+        <img src="assets/fotos/foto8.jpg" alt="" loading="lazy" />
+        <figcaption>passeio à noite</figcaption>
+      </figure>
+
+      <div class="love-note" data-aos="fade-up">
+        <div class="love-heart">♥</div>
+        <p>Eu não amo você por um motivo. Amo por mil. E todos os dias eu descubro mais um.</p>
+      </div>
+
+      <figure class="polaroid rot-l" data-aos="flip-right">
+        <img src="assets/fotos/foto11.jpg" alt="" loading="lazy" />
+        <figcaption>pra onde você for</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== SEÇÃO MARCELA ===================== -->
+  <section class="her-section" id="marcela">
+    <div class="her-photo" data-aos="fade-right">
+      <figure class="polaroid big rot-l">
+        <img src="assets/fotos/foto23.jpg" alt="Marcela" loading="lazy" />
+        <figcaption>a minha pessoa favorita</figcaption>
+      </figure>
+    </div>
+    <div class="her-text" data-aos="fade-left">
+      <p class="kicker">a mulher da minha vida</p>
+      <h2 class="section-title grad-text">A minha Marcela</h2>
+      <p>Tem um jeito de sorrir que ilumina tudo. Tem um olhar que me acalma e um abraço que vira casa.</p>
+      <p>Você é forte, é doce, é luz. E eu sou a pessoa mais sortuda do mundo por poder te amar todos os dias.</p>
+      <p class="her-sign">obrigado por ser você ♥</p>
+    </div>
+  </section>
+
+  <!-- ===================== MOMENTO 2 ===================== -->
+  <section class="moment">
+    <img class="moment-img kenburns" src="assets/fotos/foto19.jpg" alt="Um beijo" loading="lazy" style="object-position:center 30%" />
+    <div class="moment-veil"></div>
+    <div class="moment-text" data-aos="zoom-in">
+      <p class="moment-quote">"E no meio da bagunça da vida, o meu lugar de paz é do seu lado."</p>
+    </div>
+  </section>
+
+  <!-- ===================== MENSAGENS + POLAROIDS 2 ===================== -->
+  <section class="scatter scatter-b">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">nossas aventuras</p>
+      <h2 class="section-title grad-text">A gente combina</h2>
+    </div>
+
+    <div class="scatter-row">
+      <figure class="polaroid rot-r" data-aos="zoom-in">
+        <img src="assets/fotos/foto7.jpg" alt="" loading="lazy" />
+        <figcaption>vai, Corinthians! 🖤</figcaption>
+      </figure>
+      <figure class="polaroid rot-l" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/fotos/foto15.jpg" alt="" loading="lazy" />
+        <figcaption>a cidade é nossa</figcaption>
+      </figure>
+      <figure class="polaroid rot-r" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/fotos/foto14.jpg" alt="" loading="lazy" />
+        <figcaption>nosso timão</figcaption>
+      </figure>
+    </div>
+
+    <div class="love-note centered" data-aos="fade-up">
+      <div class="love-heart">♥</div>
+      <p>Seja torcendo juntos, rindo à toa ou só ficando em casa de pijama — com você até o comum vira inesquecível.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SEÇÃO ALIANÇAS ===================== -->
+  <section class="rings-section" id="compromisso">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker light">o nosso pedaço de eternidade</p>
+      <h2 class="section-title light">O nosso "sim"</h2>
+    </div>
+
+    <div class="rings-grid">
+      <figure class="ring-photo" data-aos="fade-right">
+        <img src="assets/fotos/foto4.jpg" alt="Nossas alianças" loading="lazy" />
+      </figure>
+      <div class="rings-text" data-aos="fade-left">
+        <p>Tem aliança que é só metal. A nossa é promessa. É escolher você, de novo, todos os dias.</p>
+        <p>Que a gente continue de mãos dadas, somando histórias, planos e amor — por muito tempo ainda.</p>
+      </div>
+      <figure class="ring-photo" data-aos="fade-up" data-aos-delay="150">
+        <img src="assets/fotos/foto16.jpg" alt="Detalhe das alianças" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== TIMELINE ===================== -->
+  <section class="timeline-section" id="historia">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">a nossa história</p>
+      <h2 class="section-title grad-text">Linha do Tempo</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot">♥</div>
+        <div class="tl-content">
+          <img src="assets/fotos/foto2.jpg" alt="" loading="lazy" />
+          <span class="tl-date">16 de março de 2025</span>
+          <h3>O começo de tudo</h3>
+          <p>O dia em que dissemos "sim" um para o outro e o mundo ficou mais colorido.</p>
+        </div>
+      </div>
+
+      <div class="tl-item right" data-aos="fade-left">
+        <div class="tl-dot">♥</div>
+        <div class="tl-content">
+          <img src="assets/fotos/foto12.jpg" alt="" loading="lazy" />
+          <span class="tl-date">cada comemoração</span>
+          <h3>Festejando a vida</h3>
+          <p>Aniversários, conquistas, bobeiras — tudo fica melhor quando é pra comemorar com você.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot">♥</div>
+        <div class="tl-content">
+          <img src="assets/fotos/foto18.jpg" alt="" loading="lazy" />
+          <span class="tl-date">os nossos passeios</span>
+          <h3>Rodando o mundo a dois</h3>
+          <p>Da praia ao parque de diversões, a melhor parte do passeio é sempre a sua companhia.</p>
+        </div>
+      </div>
+
+      <div class="tl-item right" data-aos="fade-left">
+        <div class="tl-dot">∞</div>
+        <div class="tl-content">
+          <img src="assets/fotos/foto21.jpg" alt="" loading="lazy" />
+          <span class="tl-date">para sempre</span>
+          <h3>O nosso futuro</h3>
+          <p>Onde quer que a vida nos leve, eu quero ir de mãos dadas com você.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOMENTO 3 ===================== -->
+  <section class="moment">
+    <img class="moment-img kenburns" src="assets/fotos/foto10.jpg" alt="Nós na praia" loading="lazy" style="object-position:center 22%" />
+    <div class="moment-veil"></div>
+    <div class="moment-text" data-aos="zoom-in">
+      <p class="moment-quote">"O tempo passa, o mundo muda — e eu só quero te ver sorrindo do meu lado."</p>
+    </div>
+  </section>
+
+  <!-- ===================== FAMÍLIA ===================== -->
+  <section class="family-section" id="familia">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">o nosso maior amor</p>
+      <h2 class="section-title grad-text">A nossa família</h2>
+      <p class="section-sub">o amor da gente cabe no mundo inteiro</p>
+    </div>
+
+    <div class="family-grid">
+      <figure class="polaroid rot-l" data-aos="zoom-in">
+        <img src="assets/fotos/foto22.jpg" alt="" loading="lazy" />
+        <figcaption>nosso dia no parque</figcaption>
+      </figure>
+      <figure class="polaroid rot-r big" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/fotos/foto24.jpg" alt="" loading="lazy" />
+        <figcaption>pura alegria 🥹</figcaption>
+      </figure>
+      <figure class="polaroid rot-l" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/fotos/foto20.jpg" alt="" loading="lazy" />
+        <figcaption>os meus amores</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== MENSAGENS + POLAROIDS 3 ===================== -->
+  <section class="scatter scatter-c">
+    <div class="scatter-row">
+      <figure class="polaroid rot-l" data-aos="flip-right">
+        <img src="assets/fotos/foto17.jpg" alt="" loading="lazy" />
+        <figcaption>beijos com vista pro mar</figcaption>
+      </figure>
+
+      <div class="love-note" data-aos="fade-up">
+        <div class="love-heart">♥</div>
+        <p>Se eu tivesse que escolher entre te amar e respirar, usaria meu último suspiro para dizer o quanto eu te amo.</p>
+      </div>
+
+      <figure class="polaroid rot-r" data-aos="flip-left">
+        <img src="assets/fotos/foto3.jpg" alt="" loading="lazy" />
+        <figcaption>treino a dois 💪</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== MOTIVOS PRA TE AMAR ===================== -->
+  <section class="reasons-section" id="motivos">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker">e olha que tem muito...</p>
+      <h2 class="section-title grad-text">Motivos pra te amar</h2>
+      <p class="section-sub">clica e descobre mais um ♥</p>
+    </div>
+
+    <div class="reason-card" data-aos="zoom-in">
+      <span class="reason-num" id="reason-num">motivo nº 1</span>
+      <p class="reason-text" id="reason-text">O seu sorriso, que ilumina o meu dia inteiro.</p>
+      <button class="reason-btn" id="reason-btn">ver outro motivo ♥</button>
+    </div>
+  </section>
+
+  <!-- ===================== CARTA DE AMOR ===================== -->
+  <section class="letter-section" id="carta">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker light">do fundo do meu coração</p>
+      <h2 class="section-title light">Uma carta pra você</h2>
+      <p class="section-sub light-sub">toque no selo para abrir ♥</p>
+    </div>
+
+    <div class="letter" id="letter" data-aos="zoom-in">
+      <div class="letter-seal">
+        <div class="seal-heart">♥</div>
+        <p class="seal-to">Para: Marcela</p>
+        <p class="seal-hint">toque para abrir</p>
+      </div>
+      <div class="letter-paper">
+        <p class="letter-greeting">Minha querida Marcela,</p>
+        <p>Se eu pudesse voltar no tempo, faria tudo de novo só pra te encontrar mais uma vez. Desde o dia 16 de março de 2025, a minha vida ganhou cor, sentido e um motivo a mais pra sorrir todas as manhãs.</p>
+        <p>Obrigado por ser tão você: forte quando eu preciso de força, doce quando eu preciso de carinho, e a minha melhor amiga em todos os momentos. Com você eu aprendi que amar é também cuidar, ter paciência e construir — e é isso que eu quero fazer com você, todos os dias.</p>
+        <p>Obrigado pela nossa família, pelos abraços, pelas risadas bobas e até pelas brigas que sempre terminam num beijo. Eu não sei o que o futuro reserva, mas sei de uma coisa: onde você estiver, é onde eu quero estar.</p>
+        <p>Te amo mais do que as palavras conseguem dizer. E vou passar o resto da vida tentando te mostrar isso.</p>
+        <p class="letter-sign">eternamente seu, David ♥</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINALE ===================== -->
+  <section class="finale" id="final">
+    <img class="finale-bg kenburns" src="assets/fotos/foto5.jpg" alt="" loading="lazy" style="object-position:center 32%" />
+    <div class="finale-veil"></div>
+    <div class="finale-inner" data-aos="zoom-in">
+      <p class="finale-script">eu te amo,</p>
+      <h2 class="finale-name">Marcela</h2>
+      <p class="finale-text">
+        Esse cantinho na internet é o meu jeito de te dizer, todos os dias,
+        o quanto você é importante para mim. Obrigado por ser o amor da minha vida.
+      </p>
+      <p class="finale-sign">com todo o meu amor, David ♥</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Feito com <span class="footer-heart">♥</span> por David, para a Marcela</p>
+    <p class="footer-since">16.03.2025 — ∞</p>
+  </footer>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
