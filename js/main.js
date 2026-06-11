@@ -112,15 +112,31 @@ musicBtn.addEventListener('click', (e) => {
   }
 });
 
-// Toca sozinha; se o navegador bloquear, começa na 1ª interação (clique/toque/rolagem)
-const startEvents = ['pointerdown', 'touchstart', 'keydown', 'scroll'];
-function startOnInteraction() {
-  playMusic().catch(() => {});
-  startEvents.forEach((ev) => window.removeEventListener(ev, startOnInteraction));
+/* ---------- Tela de entrada: começa o site COM a música ----------
+   Navegadores de celular bloqueiam som automático antes de um toque.
+   O toque em "tocar e entrar" é o gesto que libera o áudio — então a
+   pessoa entra no site já com a música tocando. */
+const enterScreen = document.getElementById('enter-screen');
+const enterBtn = document.getElementById('enter-btn');
+let entered = false;
+function enterSite() {
+  if (entered) return;
+  entered = true;
+  playMusic().catch(() => {}); // gesto do usuário: toca também no celular
+  if (enterScreen) enterScreen.classList.add('gone');
+  const pre = document.getElementById('preloader');
+  if (pre) pre.classList.add('hidden');
 }
-playMusic().catch(() => {
-  startEvents.forEach((ev) => window.addEventListener(ev, startOnInteraction, { passive: true }));
-});
+if (enterBtn) enterBtn.addEventListener('click', enterSite);
+if (enterScreen) enterScreen.addEventListener('click', enterSite);
+
+// Rede de segurança: se por algum motivo a tela de entrada não aparecer,
+// começa a música no primeiro toque/clique da página.
+function fallbackStart() {
+  playMusic().catch(() => {});
+  ['pointerdown', 'touchend', 'keydown'].forEach((ev) => document.removeEventListener(ev, fallbackStart));
+}
+['pointerdown', 'touchend', 'keydown'].forEach((ev) => document.addEventListener(ev, fallbackStart, { passive: true }));
 
 /* ---------- Motivos pra te amar ---------- */
 const REASONS = [
