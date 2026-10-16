@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cristais Sombrios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="luz-vela" aria-hidden="true"></div>
+  <div class="grao" aria-hidden="true"></div>
+
+  <header id="hud" class="oculto">
+    <span title="Velas: se todas apagarem, você perde">Velas <b id="hud-velas"></b></span>
+    <span title="Dentes: moeda do mercador">🦷 <b id="hud-dentes">0</b></span>
+    <button id="btn-baralho" title="Ver baralho">🃏 <b id="hud-baralho">0</b></button>
+    <button id="btn-ajuda" title="Como jogar">?</button>
+    <button id="btn-mudo" title="Som">🔊</button>
+  </header>
+
+  <div id="dialogo" class="oculto">
+    <div class="olhos" aria-hidden="true"><span></span><span></span></div>
+    <p id="dialogo-texto"></p>
+  </div>
+
+  <section id="tela-titulo" class="tela">
+    <div class="olhos grandes" aria-hidden="true"><span></span><span></span></div>
+    <h1>Cristais<br>Sombrios</h1>
+    <p id="subtitulo" class="subtitulo">Quatro cristais apodrecem. Uma cabana. Um jogo de cartas que você não pode recusar.</p>
+    <input id="nome" maxlength="16" placeholder="Escreva seu nome" autocomplete="off">
+    <button id="btn-comecar" class="principal">Acordar</button>
+    <button id="btn-ajuda-titulo">Como jogar</button>
+    <p class="aviso">Use fones. Jogue no escuro.</p>
+  </section>
+
+  <section id="tela-mapa" class="tela oculto">
+    <div id="cristais"></div>
+    <h2 id="mapa-titulo"></h2>
+    <div id="trilha"></div>
+    <div id="escolhas"></div>
+  </section>
+
+  <section id="tela-batalha" class="tela oculto">
+    <div id="lei" class="oculto"></div>
+    <div id="fase"></div>
+    <div class="area-balanca">
+      <div id="balanca"></div>
+      <div id="balanca-texto"></div>
+    </div>
+    <div id="tabuleiro">
+      <div class="rotulo-linha">Próximo turno</div>
+      <div id="linha-fila" class="linha fila"></div>
+      <div id="linha-inimigo" class="linha"></div>
+      <div id="linha-jogador" class="linha"></div>
+    </div>
+    <div id="painel-batalha">
+      <button id="pilha-baralho" class="pilha">Baralho<b id="n-baralho">0</b></button>
+      <button id="pilha-almas" class="pilha almas">Almas<b id="n-almas">0</b></button>
+      <div class="recursos">
+        <div>🦴 <b id="ossos">0</b></div>
+        <div id="mp"></div>
+      </div>
+      <div class="limite" title="Enche quando suas criaturas sofrem dano ou são sacrificadas.">
+        <div>⚡ Limite <span id="limite-barra"></span></div>
+        <button id="btn-limite" title="Todas as suas criaturas atacam agora com +1 de ataque, sem passar o turno.">Juízo Final</button>
+      </div>
+      <button id="sino" class="principal">🔔 Tocar o sino</button>
+    </div>
+    <p id="instrucao"></p>
+    <div id="detalhe" aria-live="polite"></div>
+    <div id="mao"></div>
+  </section>
+
+  <section id="tela-fim" class="tela oculto">
+    <h2 id="fim-titulo"></h2>
+    <p id="fim-texto"></p>
+    <div id="fim-carta"></div>
+    <button id="btn-reiniciar" class="principal">Acordar outra vez</button>
+  </section>
+
+  <div id="modal" class="overlay oculto">
+    <div class="caixa">
+      <h2 id="modal-titulo"></h2>
+      <div id="modal-conteudo"></div>
+      <div id="modal-acoes"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>

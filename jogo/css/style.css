@@ -1,0 +1,453 @@
+:root {
+  --fundo: #070605;
+  --madeira: #1a120c;
+  --papel: #cfc3a1;
+  --papel-escuro: #9d8f6c;
+  --tinta: #1c140d;
+  --texto: #d9cfb6;
+  --apagado: #7d7262;
+  --sangue: #8e1b1b;
+  --sangue-vivo: #c6282b;
+  --mp: #3e7cc4;
+  --ouro: #c9a227;
+  --olho: #e8d27a;
+  --cor-regiao: #8a7440;
+  --fonte: 'IM Fell English', Georgia, 'Times New Roman', serif;
+  --fonte-titulo: 'IM Fell English SC', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 55%, #2a1c11 0%, #120c08 45%, var(--fundo) 80%);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: var(--fonte);
+  font-size: 16px;
+  color: var(--texto);
+  background: #2b1f15;
+  border: 1px solid #5a4632;
+  border-radius: 4px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: #3b2a1c; border-color: var(--ouro); }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+button.principal { background: var(--sangue); border-color: #c24a3a; font-size: 18px; padding: 10px 22px; }
+button.principal:hover:not(:disabled) { background: var(--sangue-vivo); }
+
+.oculto { display: none !important; }
+
+/* ---------- Atmosfera ---------- */
+
+.luz-vela {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 60%, rgba(255, 170, 80, 0.08), transparent 55%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  animation: tremeluzir 3.2s infinite;
+  z-index: 50;
+}
+
+@keyframes tremeluzir {
+  0%, 100% { opacity: 1; }
+  12% { opacity: 0.82; }
+  15% { opacity: 1; }
+  48% { opacity: 0.9; }
+  51% { opacity: 0.7; }
+  54% { opacity: 0.95; }
+}
+
+.grao {
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: repeating-radial-gradient(circle at 17% 32%, #fff 0, transparent 1px, transparent 3px),
+    repeating-radial-gradient(circle at 71% 63%, #fff 0, transparent 1px, transparent 4px);
+  animation: grao 0.6s steps(4) infinite;
+  z-index: 51;
+}
+
+@keyframes grao {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-1%, 3%); }
+}
+
+body.tremor { animation: tremor 0.4s; }
+@keyframes tremor {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 3px); }
+  40% { transform: translate(5px, -4px); }
+  60% { transform: translate(-4px, -2px); }
+  80% { transform: translate(3px, 4px); }
+}
+
+.olhos { display: flex; gap: 26px; justify-content: center; }
+.olhos span {
+  transform: var(--olhar, none);
+  width: 18px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--olho);
+  box-shadow: 0 0 12px var(--olho), 0 0 26px rgba(232, 210, 122, 0.4);
+  animation: piscar 5s infinite;
+}
+.olhos.grandes { gap: 60px; margin-bottom: 20px; }
+.olhos.grandes span { width: 40px; height: 12px; }
+@keyframes piscar {
+  0%, 92%, 100% { scale: 1 1; }
+  95% { scale: 1 0.1; }
+}
+
+/* ---------- HUD e diálogo ---------- */
+
+#hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  justify-content: flex-end;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), transparent);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 60;
+  font-size: 15px;
+}
+#hud button { padding: 4px 10px; }
+
+#dialogo {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, calc(100% - 32px));
+  background: rgba(5, 4, 3, 0.92);
+  border: 1px solid #3a2c1f;
+  border-radius: 6px;
+  padding: 10px 16px 12px;
+  z-index: 75;
+  cursor: pointer;
+}
+#dialogo .olhos { gap: 18px; margin-bottom: 6px; }
+#dialogo .olhos span { width: 12px; height: 5px; }
+#dialogo-texto { margin: 0; text-align: center; font-style: italic; min-height: 1.3em; }
+
+/* ---------- Telas ---------- */
+
+.tela {
+  min-height: 100vh;
+  padding: 160px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+#tela-titulo { justify-content: center; padding-top: 40px; }
+h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(44px, 10vw, 80px);
+  line-height: 0.95;
+  margin: 0;
+  color: var(--papel);
+  text-shadow: 0 0 30px rgba(198, 40, 43, 0.5);
+}
+h2 { font-family: var(--fonte-titulo); font-weight: normal; margin: 0; color: var(--papel); }
+.subtitulo { max-width: 420px; color: var(--apagado); font-style: italic; }
+
+#nome {
+  font-family: var(--fonte);
+  font-size: 18px;
+  text-align: center;
+  background: transparent;
+  color: var(--texto);
+  border: 0;
+  border-bottom: 1px solid #5a4632;
+  padding: 6px;
+  width: 240px;
+  outline: none;
+}
+
+.aviso { color: #4f463b; font-size: 13px; font-style: italic; }
+
+/* ---------- Mapa ---------- */
+
+#cristais { display: flex; gap: 18px; justify-content: center; }
+.cristal { display: flex; flex-direction: column; align-items: center; color: #3a332a; font-size: 13px; }
+.cristal span { font-size: 34px; line-height: 1; filter: grayscale(1) brightness(0.4); }
+.cristal.puro span, .cristal.atual span { color: var(--cor); filter: none; }
+.cristal.puro span { text-shadow: 0 0 16px var(--cor); }
+.cristal.atual span { animation: pulsar 2s infinite; opacity: 0.6; }
+.cristal.puro small, .cristal.atual small { color: var(--texto); }
+@keyframes pulsar { 50% { opacity: 0.25; } }
+
+#trilha { display: flex; align-items: center; margin: 10px 0 20px; }
+.no { font-size: 22px; color: #4a3d2e; width: 30px; }
+.no.feito { color: var(--apagado); }
+.no.atual { color: var(--ouro); text-shadow: 0 0 10px var(--ouro); }
+.caminho { width: 40px; border-top: 1px dashed #4a3d2e; }
+
+#escolhas { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.escolha {
+  width: 170px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(#21170f, #120c08);
+  border: 1px solid var(--cor-regiao);
+}
+.escolha small { font-size: 13px; color: var(--apagado); padding: 0 8px; line-height: 1.2; }
+.escolha .icone { font-size: 46px; filter: grayscale(0.6) sepia(0.4); }
+.escolha:hover .icone { filter: none; }
+
+/* ---------- Cartas ---------- */
+
+.carta {
+  position: relative;
+  width: 96px;
+  height: 136px;
+  background: linear-gradient(170deg, var(--papel), var(--papel-escuro));
+  color: var(--tinta);
+  border: 1px solid #3b2d1f;
+  border-radius: 5px;
+  padding: 4px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), inset 0 0 18px rgba(60, 40, 15, 0.45);
+  user-select: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.carta .custo { align-self: flex-end; font-size: 11px; min-height: 15px; font-weight: bold; }
+.c-ossos { color: #3d3326; }
+.c-mp { color: #1d4b85; }
+.carta .nome { font-size: 12px; line-height: 1.05; font-weight: bold; min-height: 26px; }
+.carta .arte {
+  font-size: 36px;
+  line-height: 1.2;
+  filter: grayscale(1) sepia(0.7) contrast(1.4) brightness(0.75);
+}
+.carta .sigilos { font-size: 14px; min-height: 18px; letter-spacing: 2px; }
+.carta .stats { margin-top: auto; width: 100%; display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; }
+.carta .stats .atk::before { content: '⚔'; font-size: 11px; margin-right: 1px; }
+.carta .stats .hp::before { content: '♥'; font-size: 11px; margin-right: 1px; color: var(--sangue); }
+.carta .stats .ferido { color: var(--sangue-vivo); }
+.carta .desc-magia { font-size: 11px; line-height: 1.1; margin-top: auto; }
+
+.carta.magia { background: linear-gradient(170deg, #b8c4d6, #6d7d96); }
+.carta.magia .arte { filter: grayscale(0.4) contrast(1.2) brightness(0.9); }
+.carta.rara { border: 2px solid var(--ouro); box-shadow: 0 0 14px rgba(201, 162, 39, 0.5), inset 0 0 18px rgba(60, 40, 15, 0.45); }
+.carta.rara .arte { filter: sepia(0.3) contrast(1.2); }
+.carta.chefe { background: linear-gradient(170deg, #7a2a22, #2c0d0a); color: var(--papel); border-color: var(--sangue-vivo); }
+.carta.chefe .arte { filter: grayscale(0.3) contrast(1.4) drop-shadow(0 0 6px #f00); }
+.carta.alma-jogador { background: linear-gradient(170deg, #3a3a3a, #111); color: #ddd; }
+.carta.alma-jogador .arte { filter: none; }
+
+/* ---------- Batalha ---------- */
+
+.area-balanca { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+#balanca { display: flex; gap: 4px; align-items: center; }
+#balanca .marca { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #4a3d2e; }
+#balanca .marca:nth-child(-n + 5) { border-color: #5a2020; }
+#balanca .marca:nth-last-child(-n + 5) { border-color: #3b5a2a; }
+#balanca .marca.meio { width: 4px; border-radius: 2px; height: 22px; }
+#balanca .marca.atual { background: var(--ouro); box-shadow: 0 0 10px var(--ouro); }
+#balanca-texto { font-size: 14px; color: var(--apagado); font-style: italic; }
+
+#tabuleiro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(#22170e, #170f09);
+  border: 1px solid #3a2a1b;
+  border-radius: 6px;
+  box-shadow: inset 0 0 40px #000;
+}
+.rotulo-linha { font-size: 12px; color: var(--apagado); text-align: left; font-style: italic; }
+.linha { display: flex; gap: 10px; }
+.linha.fila { opacity: 0.55; transform: scale(0.92); margin-bottom: 6px; }
+
+.slot {
+  width: 100px;
+  height: 140px;
+  border: 1px dashed #4a3a28;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.2s;
+}
+.slot.alvo { border: 1px solid var(--ouro); box-shadow: 0 0 12px rgba(201, 162, 39, 0.4); cursor: pointer; }
+.slot.marcada::after {
+  content: '🗡';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  background: rgba(142, 27, 27, 0.45);
+  border-radius: 6px;
+}
+.slot.ataca-jogador { transform: translateY(-26px); }
+.slot.ataca-inimigo { transform: translateY(26px); }
+.slot.ferida .carta { animation: ferida 0.3s; }
+.slot.curada .carta { box-shadow: 0 0 20px #7fd1ff; }
+.slot.entrando .carta { animation: entrar 0.25s; }
+.slot.sacrificada .carta { animation: sacrificio 0.45s forwards; }
+
+@keyframes ferida {
+  0%, 100% { transform: translateX(0); filter: none; }
+  30% { transform: translateX(-6px); filter: sepia(1) saturate(6) hue-rotate(-30deg); }
+  60% { transform: translateX(5px); }
+}
+@keyframes entrar { from { transform: translateY(30px) scale(1.1); opacity: 0; } }
+@keyframes sacrificio { to { transform: scale(0.6) rotate(-12deg); opacity: 0; filter: sepia(1) saturate(8) hue-rotate(-40deg); } }
+
+#painel-batalha { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.pilha { display: flex; flex-direction: column; align-items: center; width: 74px; padding: 6px; font-size: 13px; }
+.pilha b { font-size: 20px; }
+.pilha.almas { color: #bcc6cc; }
+.pilha.ativa { border-color: var(--ouro); box-shadow: 0 0 12px rgba(201, 162, 39, 0.5); animation: pulsar-borda 1.2s infinite; }
+@keyframes pulsar-borda { 50% { box-shadow: 0 0 2px rgba(201, 162, 39, 0.2); } }
+.recursos { display: flex; flex-direction: column; gap: 4px; font-size: 15px; min-width: 120px; }
+#mp i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--mp); margin-left: 3px; }
+#mp i.cheio { background: var(--mp); box-shadow: 0 0 6px var(--mp); }
+
+#instrucao { margin: 0; min-height: 1.3em; color: var(--apagado); font-style: italic; }
+
+#mao { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+#mao .carta { cursor: pointer; }
+#mao .carta:hover { transform: translateY(-8px); }
+#mao .carta.selecionada { transform: translateY(-18px); box-shadow: 0 0 0 2px var(--ouro), 0 0 18px rgba(201, 162, 39, 0.6); }
+#mao .carta.indisponivel { filter: brightness(0.5); }
+
+/* ---------- Janelas ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 16px 16px;
+  z-index: 70;
+}
+.caixa {
+  background: #120c08;
+  border: 1px solid #4a3a28;
+  border-radius: 8px;
+  padding: 20px;
+  width: min(720px, 100%);
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+#modal-acoes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.linha-cartas { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.opcao-carta { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.linha-cartas .opcao-carta { cursor: pointer; }
+.opcao-carta:hover .carta { transform: translateY(-6px); }
+.opcao-carta .rotulo { font-size: 14px; color: var(--ouro); }
+
+#fim-carta { margin: 10px 0; }
+#fim-texto { max-width: 440px; color: var(--apagado); font-style: italic; }
+
+@media (max-width: 560px) {
+  .tela { padding-top: 165px; }
+  .slot { width: 76px; height: 108px; }
+  .linha { gap: 6px; }
+  .carta { width: 72px; height: 104px; padding: 3px; }
+  #tabuleiro .carta, .linha .carta { width: 70px; height: 102px; }
+  .carta .nome { font-size: 10px; min-height: 22px; }
+  .carta .arte { font-size: 26px; }
+  .carta .stats { font-size: 15px; }
+  .carta .desc-magia { font-size: 9px; }
+  #hud { justify-content: center; gap: 8px; font-size: 14px; }
+}
+
+/* ---------- Mecânicas especiais ---------- */
+
+#lei {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 520px;
+  text-align: left;
+  font-size: 14px;
+  padding: 8px 14px;
+  border: 1px solid var(--sangue);
+  background: rgba(60, 10, 10, 0.4);
+  border-radius: 4px;
+  animation: lei-entra 0.8s;
+}
+.lei-icone { font-size: 28px; }
+@keyframes lei-entra { from { opacity: 0; transform: scale(1.3); } }
+#fase { color: var(--sangue-vivo); font-family: var(--fonte-titulo); min-height: 0; }
+#fase:empty { display: none; }
+
+.carta.virada {
+  background: repeating-linear-gradient(45deg, #2a1d12, #2a1d12 6px, #20160d 6px, #20160d 12px);
+  color: var(--apagado);
+  font-size: 36px;
+  justify-content: center;
+}
+
+.limite { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; }
+#limite-barra i { display: inline-block; width: 10px; height: 14px; margin-left: 2px; border: 1px solid var(--ouro); transform: skewX(-15deg); }
+#limite-barra i.cheio { background: var(--ouro); box-shadow: 0 0 6px var(--ouro); }
+#btn-limite { font-size: 14px; padding: 4px 10px; }
+#btn-limite.pronto:not(:disabled) { background: var(--ouro); color: var(--tinta); animation: pulsar-borda 0.8s infinite; box-shadow: 0 0 14px var(--ouro); }
+
+#detalhe {
+  min-height: 2.6em;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--texto);
+  padding: 6px 12px;
+  border-left: 2px solid #4a3a28;
+  text-align: left;
+}
+#detalhe:empty { border-color: transparent; }
+
+body.apagao .tela, body.apagao #hud { filter: brightness(0); transition: filter 0.1s; }
+body.apagao .luz-vela { background: #000; opacity: 1; animation: none; }
+body.juizo #tabuleiro { box-shadow: inset 0 0 60px rgba(201, 162, 39, 0.6), 0 0 40px rgba(201, 162, 39, 0.4); }
+body.onda #tabuleiro { animation: onda 0.8s; }
+@keyframes onda {
+  0%, 100% { transform: none; }
+  30% { transform: translateX(14px) skewX(-3deg); }
+  60% { transform: translateX(-6px); }
+}
+
+.ajuda { text-align: left; font-size: 15px; line-height: 1.4; }
+.ajuda h3 { font-family: var(--fonte-titulo); font-weight: normal; color: var(--ouro); margin: 16px 0 4px; }
+.ajuda ul { margin: 0; padding-left: 20px; }
+.ajuda li { margin: 4px 0; }
+#modal-conteudo { width: 100%; }
